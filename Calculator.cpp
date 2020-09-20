@@ -27,17 +27,19 @@ int main(){
     bool running = true;
     vector<int> input;
     string user_input = "";
-    cout << "Welcome to Calculator, type which arithmetic operation you would like to preform." << endl;
-    cout << "1.Addition\n2.Subtraction\n3.Division\n4.Multiplication\n";
+    cout << "Welcome to Calculator, these are the current operations supported." << endl;
+    cout << "1.Addition\n2.Subtraction\n3.Division\n4.Multiplication\n" << endl;
     char test[20];
+    char *ptr;
+    ptr = test;
+    long sum = 0;
     cin.getline(test, 20);
     for(int i = 0; i < 20; i++){
-        static long sum = 0;
-        if(test[i] == ('+' || '-' || '/' || '*')){
+        if(ptr[i] == '+' || ptr[i] == '-' || ptr[i] == '/' || ptr[i] == '*'){
             int num1, num2;
             char opr;
-            num1 = test[i-1];
-            num2 = test[i+1];
+            num1 = test[i-1] - '0';
+            num2 = test[i+1] - '0';
             opr = test[i];
             switch(opr){
                 case '+':
@@ -56,5 +58,6 @@ int main(){
         }
 
     }
+    cout << sum << endl;
     return 0;
 }
